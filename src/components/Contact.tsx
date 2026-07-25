@@ -1,7 +1,8 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { MessageCircle, Mail } from 'lucide-react'
-import { CONTACT_EMAIL, LINE_URL, WEB3FORMS_ACCESS_KEY } from '../siteConfig'
+import { CONTACT_EMAIL, LINE_URL, TURNSTILE_SITE_KEY } from '../siteConfig'
 import Reveal from './Reveal'
+import Turnstile, { type TurnstileHandle } from './Turnstile'
 
 const MESSAGE_MAX_LENGTH = 500
 
@@ -14,6 +15,8 @@ function Contact() {
     message: '',
   })
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const turnstileRef = useRef<TurnstileHandle>(null)
 
   const handleChange = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
@@ -21,21 +24,14 @@ function Contact() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!turnstileToken) return
     setStatus('submitting')
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `【HP制作のご相談】${form.company || form.name}様より`,
-          from_name: form.name,
-          email: form.email,
-          '会社名・屋号': form.company,
-          電話番号: form.phone,
-          message: form.message,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, turnstileToken }),
       })
       const data = await res.json()
 
@@ -47,6 +43,9 @@ function Contact() {
       }
     } catch {
       setStatus('error')
+    } finally {
+      setTurnstileToken(null)
+      turnstileRef.current?.reset()
     }
   }
 
@@ -173,9 +172,16 @@ function Contact() {
           </p>
         </div>
 
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={TURNSTILE_SITE_KEY}
+          onVerify={setTurnstileToken}
+          onExpire={() => setTurnstileToken(null)}
+        />
+
         <button
           type="submit"
-          disabled={status === 'submitting'}
+          disabled={status === 'submitting' || !turnstileToken}
           className="w-full rounded-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3.5 transition hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:hover:scale-100"
         >
           {status === 'submitting' ? '送信中...' : '送信する'}
