@@ -14,7 +14,7 @@ function WorksPage() {
         path="/works"
       />
       <PageHero
-        eyebrow="実績"
+        eyebrow="実績・事例"
         heading={
           <>
             どんな見せ方が合うか、
@@ -26,7 +26,7 @@ function WorksPage() {
         image="works-hero"
         imageAlt="カフェの窓際でノートパソコンのグラフを確認している様子"
       />
-      <Breadcrumb current="実績" />
+      <Breadcrumb current="実績・事例" />
       <Works />
       <CampaignBanner />
       <FinalCta

@@ -2,7 +2,7 @@ export const NAV_ITEMS = [
   { path: '/about', label: '私について' },
   { path: '/services', label: 'サービス' },
   { path: '/pricing', label: '料金' },
-  { path: '/works', label: '実績' },
+  { path: '/works', label: '実績・事例' },
   { path: '/contact', label: 'お問い合わせ' },
 ]
 

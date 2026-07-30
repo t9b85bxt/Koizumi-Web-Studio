@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 import { PRICING_PLANS } from '../data/pricingPlans'
 
@@ -48,7 +49,9 @@ function Pricing() {
                 </span>
               )}
               <h4 className="font-semibold text-navy-800 mb-1">{plan.name}</h4>
-              <p className="text-2xl font-bold text-navy-900 mb-4">{plan.price}</p>
+              <p className="text-sm text-navy-600 leading-relaxed mb-4">{plan.desc}</p>
+              <p className="text-2xl font-bold text-navy-900 mb-1">{plan.price}</p>
+              <p className="text-xs font-semibold text-orange-600 mb-4">{plan.note}</p>
               <ul className="space-y-2 text-sm text-navy-600">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex gap-2">
@@ -98,6 +101,13 @@ function Pricing() {
             </ul>
           </div>
         </div>
+
+        <Link
+          to="/services"
+          className="inline-block mt-8 text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors"
+        >
+          詳しい制作の流れはこちら →
+        </Link>
       </Reveal>
       </div>
     </section>

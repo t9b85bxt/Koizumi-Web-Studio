@@ -2,7 +2,7 @@ import SeoHead from '../components/SeoHead'
 import PageHero from '../components/PageHero'
 import Breadcrumb from '../components/Breadcrumb'
 import Services from '../components/Services'
-import Process from '../components/Process'
+import ProcessDetail from '../components/ProcessDetail'
 import FinalCta from '../components/FinalCta'
 
 function ServicesPage() {
@@ -10,7 +10,7 @@ function ServicesPage() {
     <>
       <SeoHead
         title="サービス内容・制作の流れ | ホームページ制作 | Koizumi Web Studio"
-        description="ホームページ新規制作・リニューアル・保守運用・ドメイン取得サポート・AI活用相談まで。ご相談から公開までの流れもご紹介します。"
+        description="ホームページ新規制作・リニューアル・保守運用・ドメイン取得サポートまで。ご相談から公開までの流れもご紹介します。"
         path="/services"
       />
       <PageHero
@@ -28,7 +28,7 @@ function ServicesPage() {
       />
       <Breadcrumb current="サービス" />
       <Services />
-      <Process />
+      <ProcessDetail />
       <FinalCta
         heading="どのメニューが合うか、一緒に整理しましょう"
         description="複数のメニューを組み合わせてのご相談も可能です。まずはお気軽にお問い合わせください。"

@@ -1,4 +1,4 @@
-import { Globe, Palette, Bot, ShieldCheck, type LucideIcon } from 'lucide-react'
+import { Globe, Palette, ShieldCheck, type LucideIcon } from 'lucide-react'
 import Reveal from './Reveal'
 
 const SKILLS: { title: string; desc: string; icon: LucideIcon }[] = [
@@ -11,11 +11,6 @@ const SKILLS: { title: string; desc: string; icon: LucideIcon }[] = [
     title: 'デザイン',
     desc: '見やすさを大切に、業種やお店の雰囲気に合ったデザインに整えます。',
     icon: Palette,
-  },
-  {
-    title: 'AI活用のご相談',
-    desc: '問い合わせ対応や業務効率化など、AIをどう使えばいいか分からない、というご相談にも対応します。',
-    icon: Bot,
   },
   {
     title: '保守・運用サポート',

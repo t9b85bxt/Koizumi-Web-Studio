@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FilePlus2, RefreshCcw, ShieldCheck, Globe2, Bot, type LucideIcon } from 'lucide-react'
+import { FilePlus2, RefreshCcw, ShieldCheck, Globe2, type LucideIcon } from 'lucide-react'
 import Reveal from './Reveal'
 
 const DIGEST_ITEMS: { title: string; desc: string; icon: LucideIcon }[] = [
@@ -22,11 +22,6 @@ const DIGEST_ITEMS: { title: string; desc: string; icon: LucideIcon }[] = [
     title: 'ドメイン取得サポート',
     desc: 'ドメイン(URL)はお客さま名義で取得。設定からメール開設までフォローします。',
     icon: Globe2,
-  },
-  {
-    title: 'AI活用相談',
-    desc: '問い合わせ対応や業務効率化など、AIの使いどころを一緒に整理します。',
-    icon: Bot,
   },
 ]
 
