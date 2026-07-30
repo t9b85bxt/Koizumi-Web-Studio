@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 const DIGEST_ITEMS: { title: string; desc: string; icon: LucideIcon }[] = [
   {
     title: 'ホームページ新規制作',
-    desc: 'ヒアリングからデモ提案・公開まで、99,000円〜で一貫してお任せいただけます。',
+    desc: 'ヒアリングからデモ提案・公開まで、150,000円〜で一貫してお任せいただけます。',
     icon: FilePlus2,
   },
   {
