@@ -1,4 +1,4 @@
-import { ClipboardList, LayoutTemplate, FileSignature, Rocket, LifeBuoy, type LucideIcon } from 'lucide-react'
+import { ClipboardList, FileSignature, Code2, Rocket, LifeBuoy, type LucideIcon } from 'lucide-react'
 import Reveal from './Reveal'
 
 type Step = {
@@ -6,6 +6,7 @@ type Step = {
   duration: string
   icon: LucideIcon
   desc: string
+  prepareLabel: string
   prepare: string[]
   handle: string[]
   point: string
@@ -13,47 +14,52 @@ type Step = {
 
 const STEPS: Step[] = [
   {
-    title: 'ヒアリング',
-    duration: '目安 1〜3日',
+    title: 'ご相談・ヒアリング',
+    duration: '目安 30分〜1時間',
     icon: ClipboardList,
-    desc: '現状の課題やご要望、ご予算感を伺います。オンライン(Zoom・Google Meet等)またはお電話で、30分〜1時間程度お話しします。',
+    desc: '現状の課題やご要望、ご予算感を伺います。オンライン(Zoom・Google Meet等)またはお電話で承ります。',
+    prepareLabel: 'お客さまにご準備いただくこと',
     prepare: ['今のお悩み・ご要望(箇条書きでも可)', '参考にしたいサイトがあれば共有', 'ご予算・公開希望時期の目安'],
     handle: ['ヒアリングシートに沿った質問', '日程調整・オンライン打ち合わせの設定', '概算お見積もりのご提示'],
     point: 'まだ内容が固まっていなくても大丈夫です。「何から考えればいいか分からない」という状態からご相談いただけます。',
   },
   {
-    title: 'デモ提案',
-    duration: '目安 3〜7日',
-    icon: LayoutTemplate,
-    desc: 'ヒアリング内容をもとに、実際に動くデモサイトを個別にお作りします。契約前にご覧いただけるので、完成イメージのズレを防げます。',
-    prepare: ['掲載したい写真・文章素材(あれば)', 'デモをご覧になった率直なご感想'],
-    handle: ['御社向けのデザイン・構成のご提案', 'スマホ・PCで確認できる動くデモサイトの制作', '修正ご希望のヒアリング'],
-    point: 'デモは絵(モックアップ)ではなく実際に動くサイトなので、スマホでの見え方まで契約前に確認できます。',
-  },
-  {
-    title: '契約・着手',
-    duration: '即日〜数日',
+    title: 'お見積もり・契約',
+    duration: 'ヒアリング後、即日〜翌日',
     icon: FileSignature,
-    desc: 'デモにご納得いただけたら、金額・納期・成果物の範囲を書面でご確認いただいたうえで、正式に制作を開始します。',
-    prepare: ['契約内容のご確認', '正式にご依頼いただく旨のご連絡'],
+    desc: 'ヒアリング内容をもとに、金額・納期・成果物の範囲をまとめたお見積書をご提示します。内容にご納得いただけたら、書面でご契約となります。',
+    prepareLabel: 'お客さまにご準備いただくこと',
+    prepare: ['お見積もり内容のご確認', '正式にご依頼いただく旨のご連絡'],
     handle: ['お見積書・契約内容の書面提示', 'ご入金確認後、正式に制作着手'],
     point: '金額に含まれる範囲を事前に明確にしているので、契約後に想定外の追加請求が発生することは原則ありません。',
   },
   {
-    title: '納品',
+    title: 'コーディング・実装',
     duration: '目安 1〜2週間',
+    icon: Code2,
+    desc: 'ご契約内容をもとに、デザイン・コーディングを進めます。いただいた写真・文章素材を活かしながら、実際に動くサイトとして形にしていきます。',
+    prepareLabel: 'お客さまにご準備いただくこと',
+    prepare: ['掲載したい写真・文章素材(あれば)', '制作中のご質問・ご要望への回答'],
+    handle: ['デザイン・構成の制作', 'スマホ・PC対応のコーディング', '進捗に応じたご連絡'],
+    point: '制作の途中でも、気になる点があればお気軽にご連絡ください。すり合わせながら進めます。',
+  },
+  {
+    title: '公開・納品',
+    duration: 'コーディング完了後、即日',
     icon: Rocket,
     desc: '最終確認いただいた内容で、本番サーバーへの公開設定を行います。公開後は表示速度や動作、リンク切れがないかまで確認します。',
+    prepareLabel: 'お客さまにご確認いただくこと',
     prepare: ['掲載内容の最終確認', 'スマホ・PCでの見え方チェック'],
     handle: ['本番サーバーへのアップロード作業', 'ドメイン・SSL(暗号化通信)の設定', '公開後の動作確認・表示速度チェック'],
-    point: '公開作業もこちらで行うので、専門知識がなくても当日は最終確認をしていただくだけで大丈夫です。',
+    point: '公開作業もこちらで行うので、専門知識がなくても最終確認をしていただくだけで大丈夫です。',
   },
   {
     title: '保守・運用',
     duration: '継続(任意)',
     icon: LifeBuoy,
     desc: '公開して終わりにせず、ご希望に応じて月額プランで継続的にサポートします。テキストや写真の差し替えなど、軽微な更新も承ります。',
-    prepare: ['更新したい内容があれば随時ご連絡'],
+    prepareLabel: 'お客さまにご確認いただくこと',
+    prepare: ['更新したい内容があれば随時ご連絡ください'],
     handle: ['サーバー・ドメイン・SSLの管理', '軽微な修正・更新作業', 'トラブル発生時の対応'],
     point: '保守プランへの加入は必須ではありません。ご不安な場合だけ、ご希望に応じて選んでいただけます。',
   },
@@ -108,7 +114,7 @@ function ProcessDetail() {
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-5">
                   <div className="rounded-lg bg-sky-50 p-4">
-                    <p className="text-xs font-semibold text-navy-800 mb-2">お客さまにご準備いただくこと</p>
+                    <p className="text-xs font-semibold text-navy-800 mb-2">{step.prepareLabel}</p>
                     <ul className="space-y-1.5 text-sm text-navy-600">
                       {step.prepare.map((item) => (
                         <li key={item} className="flex gap-2">

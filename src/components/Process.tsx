@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 
 const STEPS = [
-  { title: 'ヒアリング', desc: '現状・お悩み・ご予算を伺います。' },
-  { title: 'デモ提案', desc: '御社向けのデモを個別にお作りします。' },
-  { title: '契約・着手', desc: '金額・期日・成果物を書面で確認します。' },
-  { title: '納品', desc: '公開設定・動作確認まで丁寧に行います。' },
+  { title: 'ご相談・ヒアリング', desc: '現状・お悩み・ご予算を伺います。' },
+  { title: 'お見積もり・契約', desc: '金額・納期を書面で確認します。' },
+  { title: 'コーディング・実装', desc: 'デザイン・実装を進めます。' },
+  { title: '公開・納品', desc: '動作確認まで丁寧に行います。' },
   { title: '保守・運用', desc: '月額プランで継続的に伴走します。' },
 ]
 
@@ -28,6 +29,15 @@ function Process() {
             </div>
           ))}
         </div>
+
+        <p className="text-center mt-8">
+          <Link
+            to="/services"
+            className="inline-block text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors"
+          >
+            詳しい制作の流れはこちら →
+          </Link>
+        </p>
       </Reveal>
     </section>
   )
