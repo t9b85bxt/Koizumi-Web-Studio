@@ -6,7 +6,7 @@ function CampaignBanner() {
     <section id="campaign" className="scroll-mt-20 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 lg:py-14">
         <Reveal delay={0}>
-          <div className="relative rounded-[2.5rem] overflow-hidden shadow-lg shadow-orange-100">
+          <div className="relative rounded-[2.5rem] overflow-hidden shadow-lg shadow-orange-100 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-orange-200/70 active:-translate-y-1.5 active:shadow-2xl active:shadow-orange-200/70">
             <picture>
               <source srcSet="/campaign-banner.webp" type="image/webp" />
               <img
